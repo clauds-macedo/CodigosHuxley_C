@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <assert.h>
+int algoritmo_euclides(int a, int b){
+    //b = a.n+q
+    int q;
+    do{
+        q = a%b;
+        a = b;
+        b = q;
+        if (b==0){
+            return a;
+        }
+    }while(b!=0);
+    return a;
+}
+void repeticao(int repete, int i, int a, int b){
+    if (repete == 0){
+        return;
+    }
+    else{
+        scanf("%d %d", &a,&b);
+        printf("MDC(%d,%d) = %d\n", a,b,algoritmo_euclides(a,b));
+        repeticao(repete-1,i,a,b);
+    }
+}
+int main() {
+
+    int repete,a, b;
+    scanf("%d", &repete);
+    repeticao(repete,1,a,b);
+    return 0;
+}
