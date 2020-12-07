@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+void ler_valores(int caixa, char tamanho, int capdoadas, int professores){
+    
+    int unidade = 0;
+    if(scanf("%d %c", &caixa, &tamanho)!=EOF){
+        if (tamanho=='p' || tamanho=='P'){
+            unidade += caixa*10;
+            professores++;
+            capdoadas+=unidade;
+        }
+        else if (tamanho=='g' || tamanho=='G'){
+            unidade += caixa*16;
+            professores++;
+            capdoadas+=unidade;
+        }
+        ler_valores(caixa,tamanho,capdoadas, professores);
+            capdoadas+=unidade;
+
+    }
+
+    else{
+        printf("%d\n", capdoadas);
+        int quantxicaras;
+        quantxicaras = (2*capdoadas)/professores;
+        printf("%d\n", quantxicaras);
+        return;
+    }
+    
+    return;
+}
+int main(){
+    
+    int caixa, capdoadas=0, professores=0;
+    char tamanho;
+    
+    ler_valores(caixa,tamanho,capdoadas, professores);
+
+    scanf("%d %c", &caixa, &tamanho);
+    
+    return 0;
+}
